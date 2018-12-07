@@ -1,4 +1,4 @@
-use std::collections::HashSet;
+use std::collections::HashMap;
 use std::io::{self, Read, Write};
 
 type Result<T> = ::std::result::Result<T, Box<::std::error::Error>>;
@@ -14,14 +14,30 @@ fn main() -> Result<()> {
 }
 
 fn part1(input: &str) -> Result<()> {
-    let mut frequencies = [0u8; 256];
+    let mut twos = 0;
+    let mut threes = 0;
     for line in input.lines() {
-        let mut chars: Vec<char> = line.chars().collect();
-        chars.sort();
-        let sorted: String = chars.into_iter().collect();
+        let mut frequencies = HashMap::new();
+        for ch in line.chars() {
+            let freq = frequencies.entry(ch).or_insert(0);
+            *freq += 1;
+        }
 
-        writeln!(io::stdout(), "{}", sorted);
+        let vals3 = frequencies.values().filter(|x| **x == 3);
+        let vals2 = frequencies.values().filter(|x| **x == 2);
+
+        if vals3.count() > 0 {
+            threes += 1;
+        }
+
+        if vals2.count() > 0 {
+            twos += 1;
+        }
     }
+
+    writeln!(io::stdout(), "{}", twos);
+    writeln!(io::stdout(), "{}", threes);
+    writeln!(io::stdout(), "{}", twos * threes);
 
     Ok(())
 }

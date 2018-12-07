@@ -2,3 +2,7 @@
 name = "aoc_01"
 version = "0.1.0"
 
+[[package]]
+name = "aoc_02"
+version = "0.1.0"
+

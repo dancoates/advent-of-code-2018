@@ -8,7 +8,7 @@ fn main() -> Result<()> {
     io::stdin().read_to_string(&mut input)?;
 
     part1(&input)?;
-    // part2(&input)?;
+    part2(&input)?;
 
     Ok(())
 }
@@ -35,9 +35,33 @@ fn part1(input: &str) -> Result<()> {
         }
     }
 
-    writeln!(io::stdout(), "{}", twos);
-    writeln!(io::stdout(), "{}", threes);
-    writeln!(io::stdout(), "{}", twos * threes);
+    writeln!(io::stdout(), "part1: {}", twos * threes);
 
+    Ok(())
+}
+
+fn part2(input: &str) -> Result<()> {
+    for line1 in input.lines() {
+        for line2 in input.lines() {
+            let mut differences = 0;
+            let mut same = String::from("");
+
+            let mut line2_chars = line2.chars();
+
+            for ch1 in line1.chars() {
+                let ch2 = line2_chars.next().unwrap();
+                if ch1 != ch2 {
+                    differences += 1;
+                } else {
+                    same.push(ch1);
+                }
+            }
+
+            if differences == 1 {
+                writeln!(io::stdout(), "part2: {}", same);
+                return Ok(());
+            }
+        }
+    }
     Ok(())
 }

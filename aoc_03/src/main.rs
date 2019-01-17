@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use std::io::{self, Read, Write};
 
 type Result<T> = ::std::result::Result<T, Box<::std::error::Error>>;
@@ -14,6 +15,7 @@ fn main() -> Result<()> {
 
 fn part1(input: &str) -> Result<()> {
     writeln!(io::stdout(), "part1: {}", 1);
+    for line in input.lines() {}
 
     Ok(())
 }

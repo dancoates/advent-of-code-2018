@@ -1,0 +1,7 @@
+[package]
+name = "variables"
+version = "0.1.0"
+authors = ["Dan Coates <dan.coates@blueflag.com.au>"]
+edition = "2018"
+
+[dependencies]

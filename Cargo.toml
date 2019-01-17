@@ -3,4 +3,7 @@ members = [
     "aoc_01",
     "aoc_02",
     "aoc_03",
+    "guessing_game",
+    "variables",
+    "functions"
 ]
